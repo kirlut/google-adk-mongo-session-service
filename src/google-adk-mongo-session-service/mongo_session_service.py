@@ -1,12 +1,15 @@
 from google.adk.sessions.base_session_service import BaseSessionService, GetSessionConfig, ListSessionsResponse
 from google.adk.sessions.session import Session
 from google.adk.events.event import Event
+
+import pymongo
 from typing import Optional, Any
 from typing_extensions import override
 
 class MongoSessionService(BaseSessionService):
-    def __init__(self):
-        pass
+    def __init__(self, conn_string: str, db_name: str):
+        self._mongo_client = pymongo.AsyncMongoClient(conn_string)
+        self._database = self._mongo_client[db_name]
 
     @override
     async def create_session(
