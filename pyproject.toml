@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "google-adk-mongo-session-service"
+name = "google_adk_mongo_session_service"
 version = "0.0.1"
 description = "Implementation of `google.adk.sessions.base_session_service.BaseSessionService` for storing session information in MongoDB."
 readme = "README.md"
@@ -17,6 +17,13 @@ dependencies = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/google-adk-mongo-session-service"]
+packages = ["src/google_adk_mongo_session_service"]
 
 [tool.uv]
+
+[dependency-groups]
+example = [
+    "anthropic>=0.43.0",
+    "python-dotenv>=1.2.1",
+    "litellm>=1.80.15"
+]
