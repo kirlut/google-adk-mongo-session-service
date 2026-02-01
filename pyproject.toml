@@ -25,4 +25,5 @@ packages = ["src/google_adk_mongo_session_service"]
 example = [
     "anthropic>=0.43.0",
     "python-dotenv>=1.2.1",
+    "litellm>=1.80.15"
 ]

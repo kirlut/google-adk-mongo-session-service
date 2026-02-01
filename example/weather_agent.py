@@ -17,12 +17,14 @@ from google.adk import Agent, Runner
 from google.adk.utils._debug_output import print_event
 from google.genai import types
 from google_adk_mongo_session_service import MongoSessionService
+from google.adk.models.lite_llm import LiteLlm
 
 # Hardcoded user message (script does not prompt for input)
 USER_MESSAGE = "What's the weather at my location?"
 
-USER_ID = "example_user"
-SESSION_ID = "example_session"
+USER_ID = "user_id"
+SESSION_ID = "session_id"
+APP_NAME = "app_name"
 
 
 def get_user_location() -> str:
@@ -40,6 +42,8 @@ async def main() -> None:
 
     conn_string = os.environ.get("MONGO_URI")
     db_name = os.environ.get("MONGO_DB_NAME")
+    model_name = os.environ.get("MODEL_NAME")
+
     if not conn_string or not db_name:
         raise SystemExit(
             "Set MONGO_URI and MONGO_DB_NAME in .env (see example/.env.example)."
@@ -51,7 +55,7 @@ async def main() -> None:
 
     agent = Agent(
         name="weather_agent",
-        model="claude-3-5-sonnet-20241022",
+        model=LiteLlm(model=model_name),
         instruction=(
             "You answer questions about the weather at the user's location. "
             "Use the provided tools to get the user's location and then the weather."
@@ -60,7 +64,7 @@ async def main() -> None:
     )
 
     runner = Runner(
-        app_name="weather_example",
+        app_name=APP_NAME,
         agent=agent,
         session_service=session_service,
         auto_create_session=True,
