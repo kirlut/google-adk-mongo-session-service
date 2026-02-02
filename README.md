@@ -19,4 +19,4 @@ session_service = MongoSessionService(conn_string="mongodb://...", db_name="mydb
 # Pass session_service to your Agent / Runner as the session backend
 ```
 
-**Full example:** [example/](example/) — runnable weather agent with MongoSessionService; see [example/README.md](example/README.md) for setup and run instructions.
+**Full example:** [example/](https://github.com/kirlut/google-adk-mongo-session-service/tree/main/example/) — runnable weather agent with MongoSessionService; see [example/README.md](https://github.com/kirlut/google-adk-mongo-session-service/blob/main/example/README.md) for setup and run instructions.
