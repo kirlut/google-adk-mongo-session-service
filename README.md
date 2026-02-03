@@ -1,5 +1,5 @@
 [![PyPI version](https://img.shields.io/pypi/v/google-adk-mongo-session-service.svg)](https://pypi.org/project/google-adk-mongo-session-service/)
-
+ 
 **Disclaimer:** This code was written with the help of an AI agent and has never been tested in production. Please test it carefully before using it in production.
 
 Implementation of `google.adk.sessions.base_session_service.BaseSessionService` for storing session information in MongoDB. It plugs into [Google ADK](https://github.com/google/adk) agents so sessions can be backed by MongoDB instead of in-memory/default storage.
